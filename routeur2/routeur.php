@@ -41,7 +41,7 @@ class routeur {
 
         if($controller && in_array($controller,$this->controller_list))
         {
-            $this->controller_name = $controller.'Controller';
+            $this->controller_name = ucfirst($controller.'Controller');
         }
         return $path;
     }
