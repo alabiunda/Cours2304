@@ -19,6 +19,7 @@ class routeur {
         $this->controller = false;
         $this->root = $this->parseRoot($self);
         $this->route = $this->parseURL($url);
+        $this->run();
     }
 
     function parseRoot($self)
@@ -40,11 +41,18 @@ class routeur {
 
         if($controller && in_array($controller,$this->controller_list))
         {
-            $this->controller_name = $controller;
+            $this->controller_name = $controller.'Controller';
         }
-
+        return $path;
     }
 
+    private function run()
+    {
+        if($this->controller_name)
+        {
+            $this->controller = new $this->controller_name($this->get,$this->post,$this->post);
+        }
+    }
 }
 
 ?>
