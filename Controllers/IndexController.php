@@ -2,7 +2,14 @@
 class IndexController{
     function __construct($get, $post, $route)
     {
-        var_dump('in index controller');
+        if(!$get && !$post){
+            $dao = new ProductDAO();
+            $dao->fetchAll();
+            var_dump($dao);
+    }
     }
 }
+
+//1 Venir inclure les vues nécessaires
+//2 Gérer les requêtes nécessaires au niveau du controlleur
 ?>

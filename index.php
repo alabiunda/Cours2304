@@ -6,13 +6,15 @@ spl_autoload_register(function($class){
     else if (strpos($class,"Controller")){
         include"controllers/{$class}.php";
     }
+    else if (strpos($class,"DAO")){
+        include"models/dao/{$class}.php";
+    }
+    else {
+        include"models/entities/{$class}.php";
+    }
 });
 include 'routeur2/routeur.php';
 
-var_dump($_SERVER);
-
 $router = new routeur ($_GET,$_POST, $_SERVER['PHP_SELF'],$_SERVER['REQUEST_URI']);
-
-var_dump ($router);
 
 ?>
