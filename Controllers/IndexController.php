@@ -6,6 +6,7 @@ class IndexController{
             $dao = new ProductDAO();
             $dao->fetchAll();
             var_dump($dao);
+            var_dump($dao);
     }
     }
 }
